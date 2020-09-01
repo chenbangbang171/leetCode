@@ -4,14 +4,15 @@ public class climbStairs {
 
 	public static void main(String[] args) {
 		System.out.println(climbStairs(7));
+		int x = 0;
 	}
 
-	 
+
 	public static int climbStairs(int n) {
 		if (n <=2) {
 			return n;
 		}
-		
+
 		int i1 = 1;
 		int i2 = 2;
 		for (int i = 3; i <= n; i++) {
