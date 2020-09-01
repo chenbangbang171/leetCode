@@ -5,7 +5,6 @@ public class palindrome {
 	class ListNode {
 		int val;
 		ListNode next;
-
 		ListNode(int x) {
 			val = x;
 		}
@@ -14,29 +13,31 @@ public class palindrome {
 	public static void main(String[] args) {
 
 	}
-
+	//判断一个单链表是不是回文链表
 	public static boolean isPalindrome(ListNode head) {
 		ListNode curr = head;
 		if (curr == null || curr.next == null) {
 			return true;
 		}
 
+		//定义快慢指针
 		ListNode fast = head;
 		ListNode slow = head;
 
+		//使用快慢指针，找出链表中点，slow
 		while (fast.next != null && fast.next.next != null) {
 			fast = fast.next.next;
 			slow = slow.next;
 		}
 
+		//将后半部分翻转
 		slow = reverseList(slow);
 
+		//使用后半部分和前半部分比较
 		while (slow != null && head != null) {
-
 			if (slow.val != head.val) {
 				return false;
 			}
-
 			slow = slow.next;
 			head = head.next;
 		}

@@ -30,75 +30,46 @@ public class sum2 {
 		}
 	}
 
-	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		ListNode head = new ListNode(0);
-		ListNode curr = new ListNode(0);
-		curr = head;
-		boolean flag = false;
-		int sum = 0;
 
-		while ((l1 != null) || (l2 != null)) {
-			int x = (l1 != null) ? l1.val : 0;
-	        int y = (l2 != null) ? l2.val : 0;
-
-			if ((x + y) >= 10) {
-				if (flag) {
-					sum = ( (x + y) % 10) + 1;
-					flag = true;
-				}else {
-					sum = (x + y) % 10;
-					flag = true;
-				}
-			} else {
-				if (flag) {
-					sum = x + y + 1;
-					if (sum == 10) {
-						sum = sum % 10;
-						flag = true;
-						
-					}else if(sum > 10) {
-						sum = sum % 10 + 1;
-						flag = true;
-					}else{
-						flag = false;
-					}
-				} else {
-					sum = x + y;
-					flag = false;
-				}
-			}
-			
-			curr.next = new ListNode(sum);
-			curr = curr.next;
-			
-			if(l1 != null) l1 = l1.next;
-			if(l2 != null) l2 = l2.next;
-
-		}
-		if (flag) {
-			curr.next = new ListNode(1);
-		}
-
-		return head.next;
-	}
-
+	/**
+	 * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+	 * 输出：7 -> 0 -> 8
+	 * 原因：342 + 465 = 807
+	 * */
 	public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+		//初始化伪头部
 		ListNode dummyHead = new ListNode(0);
+
 	    ListNode p = l1, q = l2, curr = dummyHead;
+
+	    //初始化进位值
 	    int carry = 0;
 	    while (p != null || q != null) {
+
+	    	//若节点不为空，则取到该节点的值，否则为0
 	        int x = (p != null) ? p.val : 0;
 	        int y = (q != null) ? q.val : 0;
+
+	        //将两个链表对应位置相加，若上个位置发生进位，carry为1，也算入这次运算
 	        int sum = carry + x + y;
+
+	        //若不超过10，则carry是0，若大于等于10则为1
 	        carry = sum / 10;
+
+	        //将sum对10取余并作为下个节点的值
 	        curr.next = new ListNode(sum % 10);
 	        curr = curr.next;
+
+	        //往后移动
 	        if (p != null) p = p.next;
 	        if (q != null) q = q.next;
 	    }
+
+	    //如果发生进位，则carry就是进位值，若前面的最后一次运算发生进位，则在最后添加一个节点，值为carry
 	    if (carry > 0) {
 	        curr.next = new ListNode(carry);
 	    }
+	    //返回伪头部的next，就是链表表头（伪头部的值并不参与运算，它的next就是我们需要的链表的表头）
 	    return dummyHead.next;
 
 	}

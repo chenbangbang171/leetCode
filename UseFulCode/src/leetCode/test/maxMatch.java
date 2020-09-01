@@ -7,6 +7,10 @@ public class maxMatch {
 		longestCommonPrefix(strs);
 	}
 
+	/**
+	 * 在一个字符串数组中，找出最长前缀并返回，若没有返回空串；
+	 *
+	 * */
 	public static String  longestCommonPrefix(String[] strs) {
 		int len = strs.length;
 		

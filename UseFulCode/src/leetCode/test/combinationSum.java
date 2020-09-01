@@ -7,8 +7,8 @@ import java.util.List;
 public class combinationSum {
 
 	public static void main(String[] args) {
-		int[] arr = {2,3,4,5,6};
-		int target = 8;
+		int[] arr = {6,3,4,5,7};
+		int target = 13;
 		
 		List<List<Integer>> combinationSum = combinationSum(arr,target);
 		for (List<Integer> list : combinationSum) {
@@ -43,11 +43,8 @@ public class combinationSum {
             listAll.add(tmp);
             return;
         } 
-        //if(target<candidates[num]) return;
-        
-        /**
-         * 
-         * */
+
+
         for(int i=num;i<candidates.length&&candidates[i]<=target;i++){
             //拷贝一份，不影响下次递归
             List<Integer> list=new ArrayList<>(tmp);

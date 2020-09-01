@@ -8,7 +8,7 @@ public class sentencePreSearcheWord {
 		System.out.println(isPrefixOfWord(sentence,word));
 	}
 	
-	
+	//查找一个句子中第一个前缀为searchword的单词并返回它的位置
 	public static int isPrefixOfWord(String sentence, String searchWord) {
 		String[] strs = sentence.split(" ");
 		
@@ -29,26 +29,11 @@ public class sentencePreSearcheWord {
 			}else {
 				index++;
 			}
-			
-//			//用该单词和搜索前缀依次字符比较
-//			for (int i = 0; i < len; i++) {
-//				
-//				//若出现不相同的
-//				if (strs[index].charAt(i) != searchWord.charAt(i) ) {
-//					index++;
-//					break;
-//				}else {
-//					count++;
-//				}
-//			}
-//			
-//			if(count == len) {
-//				return index + 1;
-//			}
-			
 		}
 		return -1;
 		
     }
+
+
 
 }
