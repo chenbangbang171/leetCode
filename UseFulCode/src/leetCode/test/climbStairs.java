@@ -1,10 +1,15 @@
 package leetCode.test;
 
+
+import java.util.Random;
+
+import static java.lang.Math.random;
+
 public class climbStairs {
 
 	public static void main(String[] args) {
 		System.out.println(climbStairs(7));
-		int x = 0;
+
 	}
 
 
